@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AURA - Luxe Modern Atelier. Experience luxury fashion, fine timepieces, couture, and artisan accessories.">
+    <title>AURA — Luxe Modern Atelier</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container announcement-content">
+            <span><i class="fa-solid fa-sparkles"></i> COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $500</span>
+            <div class="announcement-links">
+                <a href="#atelier">VIP Concierge</a>
+                <span class="divider">|</span>
+                <a href="#stores">Bespoke Fitting</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header" id="navbar">
+        <div class="container header-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-mark">AURA</span>
+                <span class="logo-sub">PARIS • MILAN • TOKYO</span>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search collections, timepieces, couture..." autocomplete="off">
+                <button type="button" id="clearSearch" class="clear-search-btn" hidden><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <button class="icon-btn" id="wishlistBtn" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge-dot" id="wishlistDot" hidden></span>
+                </button>
+                <button class="icon-btn cart-toggle-btn" id="cartBtn" title="Shopping Bag">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count-badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <div class="hero-tag">AUTUMN / WINTER 2026 ATELIER</div>
+                <h1 class="hero-title">Timeless Luxury, <br>Refined for the Modern Era.</h1>
+                <p class="hero-description">Discover meticulously handcrafted timepieces, bespoke apparel, and artisan leatherware created for discerning connoisseurs worldwide.</p>
+                <div class="hero-cta-group">
+                    <a href="#catalog" class="btn btn-primary"><i class="fa-solid fa-arrow-right-long"></i> Explore Collections</a>
+                    <a href="#lookbook" class="btn btn-secondary"><i class="fa-solid fa-play"></i> Watch Campaign</a>
+                </div>
+                
+                <!-- Floating Glassmorphic Stats -->
+                <div class="hero-stats-glass">
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label">Certified Authentic</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">4.95★</span>
+                        <span class="stat-label">Client Satisfaction</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">24/7</span>
+                        <span class="stat-label">Global Concierge</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Value Proposition Grid -->
+        <section class="brand-features">
+            <div class="container features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-plane-up"></i></div>
+                    <h3>Global Courier</h3>
+                    <p>Insured complimentary door-to-door delivery worldwide.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Authenticity Guaranteed</h3>
+                    <p>Every piece is individually numbered with a digital passport.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3>Bespoke Craftsmanship</h3>
+                    <p>Hand-crafted in limited atelier batches by master artisans.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                    <h3>30-Day Atelier Guarantee</h3>
+                    <p>Complimentary returns & personal white-glove pickup.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Catalog Section -->
+        <section class="catalog-section" id="catalog">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-subtitle">CURATED SELECTION</span>
+                        <h2 class="section-title">The Atelier Showcase</h2>
+                    </div>
+                    <div class="filter-controls">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="featured">Sort by: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div class="category-tabs" id="categoryTabs">
+                    {% for cat in categories %}
+                    <button class="tab-btn {% if loop.first %}active{% endif %}" data-category="{{ cat.id }}">
+                        {{ cat.name }}
+                    </button>
+                    {% endfor %}
+                </div>
+
+                <!-- Active Filter Indicator & Results Info -->
+                <div class="results-bar">
+                    <span id="resultsCount">Showing all items</span>
+                    <button id="resetFiltersBtn" class="reset-link-btn" hidden><i class="fa-solid fa-arrow-rotate-left"></i> Reset filters</button>
+                </div>
+
+                <!-- Product Cards Grid -->
+                <div class="product-grid" id="productGrid">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter & VIP Atelier Club -->
+        <section class="newsletter-section" id="lookbook">
+            <div class="container newsletter-box">
+                <div class="newsletter-content">
+                    <span class="newsletter-badge">JOIN THE PRIVÉ CLUB</span>
+                    <h2>Exclusive Access to Private Drops & Private Salons.</h2>
+                    <p>Subscribe to receive invitation-only previews, private salon access, and complimentary seasonal lookbooks.</p>
+                    <form id="newsletterForm" class="newsletter-form">
+                        <input type="email" id="newsletterEmail" placeholder="Enter your private email address..." required>
+                        <button type="submit" class="btn btn-gold">Join Privé Club <i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                    <p class="privacy-note"><i class="fa-solid fa-lock"></i> We value your privacy. Unsubscribe at any time with one click.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <span class="footer-logo">AURA</span>
+                <p>AURA is an international luxury house specializing in bespoke couture, fine timepieces, high jewelry, and high-tech acoustic innovations.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Collections</h4>
+                <ul>
+                    <li><a href="#catalog">Autumn / Winter Couture</a></li>
+                    <li><a href="#catalog">High Timepieces</a></li>
+                    <li><a href="#catalog">Fine Jewelry</a></li>
+                    <li><a href="#catalog">Leather Goods</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Atelier Concierge</h4>
+                <ul>
+                    <li><a href="#">Schedule Private Fitting</a></li>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Certificate Authenticity</a></li>
+                    <li><a href="#">Care & Restoration</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Atelier Flagships</h4>
+                <p><i class="fa-solid fa-location-dot"></i> 14 Rue du Faubourg Saint-Honoré, Paris</p>
+                <p><i class="fa-solid fa-location-dot"></i> 721 Fifth Avenue, New York</p>
+                <p><i class="fa-solid fa-phone"></i> +33 (0) 1 42 68 55 00</p>
+                <p><i class="fa-solid fa-envelope"></i> concierge@aura-atelier.com</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 AURA Luxe Atelier S.A. All rights reserved. Python Static & Dynamic CI/CD Showcase.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Settings</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Slide-out Drawer -->
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> Shopping Bag (<span id="drawerCartCount">0</span>)</h3>
+            <button class="close-btn" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cartItemsContainer">
+            <!-- Dynamic Cart Items -->
+        </div>
+        <div class="cart-footer">
+            <div class="promo-box">
+                <input type="text" id="promoInput" placeholder="Promo code (Try: AURA20)" uppercase>
+                <button type="button" id="applyPromoBtn" class="btn-sm">Apply</button>
+            </div>
+            <div class="cart-summary-line" id="discountRow" hidden>
+                <span>Promo Discount (20%)</span>
+                <span class="discount-val" id="discountValue">-$0.00</span>
+            </div>
+            <div class="cart-summary-line">
+                <span>Shipping</span>
+                <span class="shipping-tag">FREE EXPRESS</span>
+            </div>
+            <div class="cart-summary-line total-line">
+                <span>Estimated Total</span>
+                <span class="total-price" id="cartTotalPrice">$0.00</span>
+            </div>
+            <button class="btn btn-gold btn-block" id="checkoutBtn"><i class="fa-solid fa-lock"></i> Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quickViewOverlay">
+        <div class="modal-card">
+            <button class="close-btn modal-close" id="closeQuickView"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body" id="quickViewBody">
+                <!-- Dynamic Quick View Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutOverlay">
+        <div class="modal-card checkout-card">
+            <button class="close-btn modal-close" id="closeCheckout"><i class="fa-solid fa-xmark"></i></button>
+            <div class="checkout-content">
+                <div class="checkout-header">
+                    <h2><i class="fa-solid fa-shield-check"></i> Atelier Secure Checkout</h2>
+                    <p>Enter your details below to finalize your complimentary insured delivery.</p>
+                </div>
+                <form id="checkoutForm" class="checkout-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" required placeholder="Lord / Lady / Mr / Ms">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" required placeholder="Vanderbilt">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="client@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Shipping Address</label>
+                        <input type="text" id="address" required placeholder="100 Luxury Boulevard, Apt 4B">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" required placeholder="New York / London">
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode">Postal / Zip Code</label>
+                            <input type="text" id="postalCode" required placeholder="10001">
+                        </div>
+                    </div>
+                    
+                    <div class="payment-mock-box">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <span>Complimentary Test Payment (Simulated Checkout)</span>
+                    </div>
+
+                    <div class="order-summary-box" id="checkoutSummaryBox">
+                        <!-- Order Total Summary -->
+                    </div>
+
+                    <button type="submit" class="btn btn-gold btn-block btn-lg" id="submitOrderBtn">
+                        Confirm & Place Order <i class="fa-solid fa-check"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification System -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
