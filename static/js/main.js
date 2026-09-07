@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sortSelect = document.getElementById('sortSelect');
     const resultsCount = document.getElementById('resultsCount');
     const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+    const themeToggle = document.getElementById('themeToggle');
 
     // Cart Elements
     const cartBtn = document.getElementById('cartBtn');
@@ -55,7 +56,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletterForm');
 
     // --- Initialize App ---
+    setupThemeToggle();
     init();
+
+    function setupThemeToggle() {
+        const updateThemeToggle = (theme) => {
+            const nextTheme = theme === 'dark' ? 'light' : 'dark';
+            themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} mode`);
+            themeToggle.setAttribute('title', `Switch to ${nextTheme} mode`);
+            themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+        };
+
+        const currentTheme = document.documentElement.dataset.theme || 'dark';
+        updateThemeToggle(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.dataset.theme = theme;
+            localStorage.setItem('aura_theme', theme);
+            updateThemeToggle(theme);
+        });
+    }
 
     async function init() {
         await fetchProducts();

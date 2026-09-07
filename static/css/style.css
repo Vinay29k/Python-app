@@ -34,6 +34,22 @@
     --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* The default palette is dark; the visitor can select this light variation. */
+html[data-theme="light"] {
+    --bg-main: #f8f7f3;
+    --bg-card: rgba(255, 255, 255, 0.92);
+    --bg-card-hover: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.78);
+    --color-gold-light: #87670f;
+    --color-text-main: #1b2028;
+    --color-text-muted: #5f6875;
+    --color-text-dim: #727b88;
+    --color-border: rgba(166, 132, 28, 0.28);
+    --color-border-glow: rgba(166, 132, 28, 0.55);
+    --shadow-soft: 0 10px 30px rgba(31, 37, 48, 0.12);
+    --shadow-gold: 0 0 25px rgba(166, 132, 28, 0.2);
+}
+
 /* Reset & Base Styles */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -53,6 +69,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 a {
@@ -281,6 +298,18 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.theme-icon-dark {
+    display: none;
+}
+
+html[data-theme="light"] .theme-icon-light {
+    display: none;
+}
+
+html[data-theme="light"] .theme-icon-dark {
+    display: block;
 }
 
 .icon-btn {
@@ -1297,6 +1326,101 @@ h1, h2, h3, h4 {
     font-size: 1.1rem;
 }
 
+/* Light-mode surface overrides for components that use dark decorative values. */
+html[data-theme="light"] .announcement-bar {
+    background: linear-gradient(90deg, #f2ead6 0%, #fffaf0 50%, #f2ead6 100%);
+}
+
+html[data-theme="light"] .main-header {
+    background: rgba(248, 247, 243, 0.88);
+    border-bottom-color: rgba(27, 32, 40, 0.1);
+}
+
+html[data-theme="light"] .search-box input,
+html[data-theme="light"] .sort-select,
+html[data-theme="light"] .newsletter-form input,
+html[data-theme="light"] .form-group input,
+html[data-theme="light"] .promo-box input {
+    background: rgba(27, 32, 40, 0.04);
+    border-color: rgba(27, 32, 40, 0.16);
+    color: var(--color-text-main);
+}
+
+html[data-theme="light"] .icon-btn,
+html[data-theme="light"] .tab-btn,
+html[data-theme="light"] .add-to-cart-btn,
+html[data-theme="light"] .social-links a,
+html[data-theme="light"] .close-btn,
+html[data-theme="light"] .qty-control {
+    background: rgba(27, 32, 40, 0.05);
+    border-color: rgba(27, 32, 40, 0.13);
+    color: var(--color-text-main);
+}
+
+html[data-theme="light"] .brand-features {
+    background: #f0efe9;
+    border-bottom-color: rgba(27, 32, 40, 0.08);
+}
+
+html[data-theme="light"] .feature-card,
+html[data-theme="light"] .cart-item {
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(27, 32, 40, 0.08);
+}
+
+html[data-theme="light"] .section-title,
+html[data-theme="light"] .product-title,
+html[data-theme="light"] .current-price,
+html[data-theme="light"] .newsletter-box h2,
+html[data-theme="light"] .footer-col h4,
+html[data-theme="light"] .cart-header h3,
+html[data-theme="light"] .cart-item-title,
+html[data-theme="light"] .total-line,
+html[data-theme="light"] .modal-info-col h2,
+html[data-theme="light"] .checkout-header h2 {
+    color: var(--color-text-main);
+}
+
+html[data-theme="light"] .product-card,
+html[data-theme="light"] .product-bottom {
+    border-color: rgba(27, 32, 40, 0.1);
+}
+
+html[data-theme="light"] .product-image-container {
+    background: #e5e2d9;
+}
+
+html[data-theme="light"] .newsletter-box {
+    background: linear-gradient(135deg, #fffdf8 0%, #f1eadb 100%);
+}
+
+html[data-theme="light"] .main-footer {
+    background: #ebe9e2;
+    border-top-color: rgba(27, 32, 40, 0.1);
+}
+
+html[data-theme="light"] .cart-drawer,
+html[data-theme="light"] .cart-footer,
+html[data-theme="light"] .modal-card,
+html[data-theme="light"] .toast {
+    background: #fbfaf7;
+    color: var(--color-text-main);
+}
+
+html[data-theme="light"] .cart-drawer,
+html[data-theme="light"] .cart-header,
+html[data-theme="light"] .cart-footer,
+html[data-theme="light"] .product-bottom,
+html[data-theme="light"] .footer-bottom {
+    border-color: rgba(27, 32, 40, 0.1);
+}
+
+html[data-theme="light"] .quick-view-btn,
+html[data-theme="light"] .product-badge {
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--color-gold-dark);
+}
+
 @keyframes toastIn {
     from {
         opacity: 0;
@@ -1338,6 +1462,15 @@ h1, h2, h3, h4 {
 @media (max-width: 640px) {
     .header-container {
         height: 64px;
+        gap: 0.75rem;
+    }
+    .header-actions {
+        gap: 0.5rem;
+    }
+    .icon-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
     }
     .search-box {
         display: none;
